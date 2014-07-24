@@ -46,10 +46,12 @@ set background=dark
 colors lucius
 syntax on
 
-" Highlight trailing whitespace etc
-highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+\%#\@<!$/
+" Highlight trailing whitespace, but not during insertion
+highlight TrailingWhitespace ctermbg=red guibg=red
+au BufEnter    * match TrailingWhitespace /\s\+$/
+au InsertEnter * match TrailingWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match TrailingWhitespace /\s\+$/
+au BufWinLeave * call clearmatches()
 
 " Ignore case
 set ignorecase
