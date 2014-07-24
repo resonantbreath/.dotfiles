@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+
+bundle exec rspec `git diff --name-only master...HEAD | grep spec | grep -v support | grep -v spec/acceptance/steps`

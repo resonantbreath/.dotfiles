@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+bundle outdated | grep "*" | cut -d " " -f 4 | while read gem; do
+  echo "Updating $gem..."
+  version=`bundle update $gem | grep -E "\s$gem\s" | grep -Eo "[0-9\.]+"`
+  if [[ -n `git diff Gemfile.lock` ]]; then
+    git add Gemfile.lock
+    git commit -m "Update $gem to $version"
+    echo "Updated $gem"
+  fi
+done
