@@ -12,6 +12,8 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'kien/ctrlp.vim'
 Bundle 'jnwhiteh/vim-golang'
 "Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdtree'
+Bundle 'othree/html5.vim'
 Bundle 'slim-template/vim-slim'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-fugitive'
@@ -95,6 +97,10 @@ set backspace=indent,start
 set backupdir=~/.vim/sessions
 set dir=~/.vim/sessions
 
+" Enable undo file
+set undofile
+set undodir=~/.vim/vimundo
+
 " Minimum number of lines to keep above/below cursor when scolling
 set scrolloff=5
 
@@ -116,6 +122,7 @@ augroup filetype_settings
   autocmd!
   autocmd BufRead,BufNewFile *.jbuilder,*.prawn setlocal filetype=ruby
   autocmd BufRead,BufNewFile *.hbs setlocal filetype=html
+  autocmd BufRead,BufNewFile *.coffee setlocal filetype=coffee
 augroup END
 
 augroup tab_settings
